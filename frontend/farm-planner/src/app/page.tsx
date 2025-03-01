@@ -13,13 +13,12 @@ type Option = {
 export default function Home() {
   const [plantData, setPlantData] = useState<PlantData[]>([]);
   const [formData, setFormData] = useState({
-    category: '',
-    likedPlants: '',
-    dislikedPlants: '',
-    budget: '',
-    area: '',
-    targetCalories: '',
-    targetProtein: ''
+    preferred_categories: [] as string[],
+    preferred_crops: [] as string[],
+    disliked_crops: [] as string[],
+    budget: undefined,
+    target_calories: undefined,
+    target_protein: undefined
   });
 
   useEffect(() => {
@@ -48,19 +47,19 @@ export default function Home() {
     data: plant
   }));
 
-  const handleSelectChange = (selectedOption: Option | null, actionMeta: { name?: string }) => {
-    if (!selectedOption || !actionMeta.name) return;
+  const handleSelectChange = (selectedOptions: readonly Option[] | null, actionMeta: { name?: string }) => {
+    if (!actionMeta.name) return;
 
     setFormData(prev => ({
       ...prev,
-      [actionMeta.name as string]: selectedOption.value
+      [actionMeta.name as string]: selectedOptions ? selectedOptions.map(opt => opt.value) : []
     }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await fetch('/api/preferences', {
+      const response = await fetch('http://localhost:8000/calculate', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -94,17 +93,18 @@ export default function Home() {
 
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
-            <label htmlFor="category" className="block mb-2 font-medium">Plant Category</label>
+            <label htmlFor="category" className="block mb-2 font-medium">Plant Categories</label>
             <Select
               id="category"
               name="category"
-              value={categoryOptions.find(opt => opt.value === formData.category)}
-              onChange={(opt) => handleSelectChange(opt, { name: 'category' })}
+              value={categoryOptions.filter(opt => formData.preferred_categories.includes(opt.value))}
+              onChange={(opt) => handleSelectChange(opt as readonly Option[], { name: 'preferred_categories' })}
               options={categoryOptions}
               className="react-select"
-              placeholder="Search or select a category"
+              placeholder="Search or select categories"
               isClearable
               isSearchable
+              isMulti
               required
             />
           </div>
@@ -114,13 +114,14 @@ export default function Home() {
             <Select
               id="likedPlants"
               name="likedPlants"
-              value={plantOptions.find(opt => opt.value === formData.likedPlants)}
-              onChange={(opt) => handleSelectChange(opt, { name: 'likedPlants' })}
+              value={plantOptions.filter(opt => formData.preferred_crops.includes(opt.value))}
+              onChange={(opt) => handleSelectChange(opt as readonly Option[], { name: 'preferred_crops' })}
               options={plantOptions}
               className="react-select"
               placeholder="Search or select preferred plants"
               isClearable
               isSearchable
+              isMulti
               required
             />
           </div>
@@ -130,12 +131,14 @@ export default function Home() {
             <Select
               id="dislikedPlants"
               name="dislikedPlants"
-              value={plantOptions.find(opt => opt.value === formData.dislikedPlants)}
-              onChange={(opt) => handleSelectChange(opt, { name: 'dislikedPlants' })}
+              value={plantOptions.filter(opt => formData.disliked_crops.includes(opt.value))}
+              onChange={(opt) => handleSelectChange(opt as readonly Option[], { name: 'disliked_crops' })}
               options={plantOptions}
               className="react-select"
               placeholder="Search or select disliked plants"
               isClearable
+              isSearchable
+              isMulti
               required
             />
           </div>
@@ -154,20 +157,6 @@ export default function Home() {
                 required
               />
             </div>
-
-            <div>
-              <label htmlFor="area" className="block mb-2 font-medium">Area (m²)</label>
-              <input
-                type="number"
-                id="area"
-                name="area"
-                min="0"
-                value={formData.area}
-                onChange={handleChange}
-                className="w-full p-2 border rounded"
-                required
-              />
-            </div>
           </div>
 
           <div className="grid grid-cols-2 gap-4">
@@ -176,9 +165,9 @@ export default function Home() {
               <input
                 type="number"
                 id="targetCalories"
-                name="targetCalories"
+                name="target_calories"
                 min="0"
-                value={formData.targetCalories}
+                value={formData.target_calories}
                 onChange={handleChange}
                 className="w-full p-2 border rounded"
                 required
@@ -190,9 +179,9 @@ export default function Home() {
               <input
                 type="number"
                 id="targetProtein"
-                name="targetProtein"
+                name="target_protein"
                 min="0"
-                value={formData.targetProtein}
+                value={formData.target_protein}
                 onChange={handleChange}
                 className="w-full p-2 border rounded"
                 required
