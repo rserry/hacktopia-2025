@@ -27,7 +27,9 @@ def objective_function(pref_crops, av_crops, pref_categories, selected_crops, am
     return cp.sum([w1*pref_crops*selected_crops, 
                    w2*av_crops*selected_crops, 
                    w3*pref_categories*selected_crops,
-                   w4*amnt_chosen])
+                   w4*amnt_chosen,
+                   w5*abs(kcals*selected_crops - kcal),
+                   w6*abs(proteins*selected_crops - protein)])
 
 def calc_climate_distance(climate1: int, climate2: int) -> int:
     # climate_order = {"A": 0, "B": 1, "C": 2, "D": 3, "E": 4}
@@ -95,8 +97,8 @@ climates = get_column_data(plant_data, column=3)
 climates_as_ints = map_to_climate_int(climates)
 climates_as_letters = map_to_climate_letter(climates)
 weights = get_column_data(plant_data, column=6)
-kcals = get_column_data(plant_data, column=7)
-proteins = get_column_data(plant_data, column=8)
+kcals = [int(kcal) for kcal in get_column_data(plant_data, column=7)]
+proteins = [int(protein) for protein in get_column_data(plant_data, column=8)]
 areas = get_column_data(plant_data, column=9)
 
 locations = remove_duplicates_preserve_order(get_column_data(weather_data, column=1))
@@ -119,15 +121,17 @@ def solve_model(pref_crops, av_crops, pref_cats, kcal=None, protein=None):
     # Solve/Optimize
     model.maximize(objective_function(pref_crops, av_crops, pref_cats, selected_crops, amnt_chosen_climates, kcal, protein))
     model.solve()
-    print([crop for i, crop in enumerate(crops) if selected_crops[i].value()])
-    print([climate for i, climate in enumerate(climates_as_letters) if selected_crops[i].value()])
+    # print([crop for i, crop in enumerate(crops) if selected_crops[i].value()])
+    # print([climate for i, climate in enumerate(climates_as_letters) if selected_crops[i].value()])
+    # print(f"aantal calorieen: {cp.sum(kcals*selected_crops).value()}")
+    # print(f"aantal proteinen: {cp.sum(proteins*selected_crops).value()}")
 
 def calculate_result(preferred_categories: set, preferred_crops: set, disliked_crops: list, budget: float, target_calories: float, target_protein: float):
     transformed_preferred_crops = np.isin(crops, list(preferred_crops)).astype(int)
     transformed_aversion_crops = np.isin(crops, list(disliked_crops)).astype(int)
     transformed_categories = np.isin(categories, list(preferred_categories)).astype(int)
-    result = solve_model(transformed_preferred_crops, transformed_aversion_crops, transformed_categories)
+    result = solve_model(transformed_preferred_crops, transformed_aversion_crops, transformed_categories, 2500, 100)
     result: tuple[str, dict[str, int]] = ("A", {"B": 10, "C": 20})
     return result
 
-calculate_result({}, {"Mango", "Papaya", "Spinach"}, {}, 10000, 3000, 150)
+# calculate_result({}, {"Mango", "Papaya", "Spinach"}, {}, 10000, 3000, 150)
