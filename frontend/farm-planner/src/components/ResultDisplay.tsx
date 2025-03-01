@@ -63,6 +63,7 @@ const ResultDisplay: React.FC<ResultProps> = ({ location, crops }) => {
                         <thead className="bg-gray-100">
                             <tr>
                                 <th className="py-2 px-4 border-b border-gray-200 text-center">Crop</th>
+                                <th className="py-2 px-4 border-b border-gray-200 text-center">Climate</th>
                                 <th className="py-2 px-4 border-b border-gray-200 text-center">Area (m²)</th>
                                 <th className="py-2 px-4 border-b border-gray-200 text-center">Cost ($/m²)</th>
                             </tr>
@@ -70,9 +71,8 @@ const ResultDisplay: React.FC<ResultProps> = ({ location, crops }) => {
                         <tbody>
                             {crops.map((crop) => (
                                 <tr key={crop.name} className="hover:bg-gray-50">
-                                    <td className="py-2 px-4 border-b border-gray-200 text-center">
-                                        {crop.name} {getClimateIcon(crop.climate)}
-                                    </td>
+                                    <td className="py-2 px-4 border-b border-gray-200 text-center">{crop.name}</td>
+                                    <td className="py-2 px-4 border-b border-gray-200 text-center">{getClimateIcon(crop.climate)}</td>
                                     <td className="py-2 px-4 border-b border-gray-200 text-center">{crop.area}</td>
                                     <td className="py-2 px-4 border-b border-gray-200 text-center">{crop.cost}</td>
                                 </tr>
