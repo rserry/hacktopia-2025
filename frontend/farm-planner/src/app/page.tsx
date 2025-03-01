@@ -86,7 +86,7 @@ export default function Home() {
         target_protein: formData.target_protein ? Number(formData.target_protein) : null
       };
 
-      const response = await fetch('http://localhost:8000/calculate', {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/calculate`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
