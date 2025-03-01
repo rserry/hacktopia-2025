@@ -5,7 +5,7 @@ import type { PlantData } from '@/utils/plantData';
 
 export async function GET() {
     try {
-        const filePath = path.resolve(process.cwd(), 'public', 'data', 'dataset_edible_plants_extended_v2.csv');
+        const filePath = path.resolve(process.cwd(), '..', '..', 'data', 'dataset_edible_plants_extendend_v2.csv');
         const text = await fs.readFile(filePath, 'utf-8');
 
         const rows = text.split('\n')
