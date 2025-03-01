@@ -131,7 +131,23 @@ def calculate_result(preferred_categories: set, preferred_crops: set, disliked_c
     transformed_aversion_crops = np.isin(crops, list(disliked_crops)).astype(int)
     transformed_categories = np.isin(categories, list(preferred_categories)).astype(int)
     result = solve_model(transformed_preferred_crops, transformed_aversion_crops, transformed_categories, 2500, 100)
-    result: tuple[str, dict[str, int]] = ("A", {"B": 10, "C": 20})
+    result = {
+        "location": "Victory Mansions", 
+        "crops": [
+            {
+                "name": "Apple",
+                "area": 10,
+                "cost": 5,
+                "climate": "Temperate"
+            }, 
+            {
+                "name": "Peach",
+                "area": 20,
+                "cost": 7,
+                "climate": "Tropical"
+            }
+        ]
+    }
     return result
 
 # calculate_result({}, {"Mango", "Papaya", "Spinach"}, {}, 10000, 3000, 150)
