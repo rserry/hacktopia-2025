@@ -14,7 +14,7 @@ def get_column_data(data, column):
     # Convert to a list (if needed)
     return column_data.tolist()
 
-def objective_function(pref_crops, av_crops, pref_categories, selected_crops, amnt_chosen, kcal=None, protein=None):
+def objective_function(pref_crops, av_crops, pref_categories, selected_crops, amnt_chosen):
     """
         Objective function to maximize
     """
@@ -22,15 +22,11 @@ def objective_function(pref_crops, av_crops, pref_categories, selected_crops, am
     w2 = -10  # For aversion crops
     w3 = 1  # For preferred category
     w4 = -3
-    w5 = 5 if kcal is not None else 0
-    w6 = 5 if protein is not None else 0
 
     return cp.sum([w1*pref_crops*selected_crops, 
                    w2*av_crops*selected_crops, 
                    w3*pref_categories*selected_crops,
-                   w4*amnt_chosen,
-                   w5*abs(kcal_values*selected_crops - kcal),
-                   w6*abs(protein_values*selected_crops - protein)])
+                   w4*amnt_chosen])
 
 def most_common_element(lst):
     """
@@ -144,10 +140,9 @@ def find_cheapest_location(locations, costs, input_locations):
     # Return the corresponding location with the lowest cost
     return filtered_locations[min_cost_index]
 
-def solve_model(pref_crops, av_crops, pref_cats, kcal=None, protein=None):
+def solve_model(pref_crops, av_crops, pref_cats):
     # Decision Variables
     selected_crops = cp.boolvar(shape=plant_data.shape[0])
-    amnt_crops = cp.intvar(shape=plant_data.shape[0])
 
     # Model
     model = cp.Model()
@@ -160,7 +155,7 @@ def solve_model(pref_crops, av_crops, pref_cats, kcal=None, protein=None):
     amnt_chosen_climates = cp.NValueExcept(selected_crops*climates_as_ints, 0)
 
     # Solve/Optimize
-    model.maximize(objective_function(pref_crops, av_crops, pref_cats, selected_crops, amnt_chosen_climates, kcal, protein))
+    model.maximize(objective_function(pref_crops, av_crops, pref_cats, selected_crops, amnt_chosen_climates))
     model.solve()
     return selected_crops.value()
 
@@ -168,19 +163,13 @@ def calculate_result(preferred_categories: set, preferred_crops: set, disliked_c
     transformed_preferred_crops = np.isin(crops, list(preferred_crops)).astype(int)
     transformed_aversion_crops = np.isin(crops, list(disliked_crops)).astype(int)
     transformed_categories = np.isin(categories, list(preferred_categories)).astype(int)
-    selected_crops = solve_model(transformed_preferred_crops, transformed_aversion_crops, transformed_categories, target_calories*10, target_protein*10)
+    selected_crops = solve_model(transformed_preferred_crops, transformed_aversion_crops, transformed_categories)
     crop_names = [crop for i, crop in enumerate(crops) if selected_crops[i]]
     corr_climates = [climate for i, climate in enumerate(climates_as_letters) if selected_crops[i]]
     area = [a for i, a in enumerate(areas) if selected_crops[i]]
     no_b_climates = [c for c in corr_climates if c != "B"]
     common_climate = most_common_element(no_b_climates)
     good_location = get_cheapest_location(common_climate)
-    calories = sum(kcal_values*selected_crops)
-    protein = sum(protein_values*selected_crops)
-    print(protein/10)
     result = (good_location, {c:area[i] for i,c in enumerate(crop_names)})
     return result
 
-print(calculate_result({"Fruits & Berries"}, {"Mango", "Papaya", "Spinach"}, {}, 10000, 3000, 100))
-
-# print(get_cheapest_location("B"))
