@@ -67,7 +67,7 @@ const ResultDisplay: React.FC<ResultProps> = ({ location, crops }) => {
                                 <th className="py-2 px-4 border-b border-gray-200 text-center">Crop</th>
                                 <th className="py-2 px-4 border-b border-gray-200 text-center">Climate</th>
                                 <th className="py-2 px-4 border-b border-gray-200 text-center">Area (m²)</th>
-                                <th className="py-2 px-4 border-b border-gray-200 text-center">Cost ($/m²)</th>
+                                <th className="py-2 px-4 border-b border-gray-200 text-center">Cost ($)</th>
                             </tr>
                         </thead>
                         <tbody>
