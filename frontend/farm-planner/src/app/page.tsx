@@ -1,5 +1,6 @@
 'use client';
 import { useState, useEffect } from "react";
+import { useRouter } from 'next/navigation';
 import Select from 'react-select';
 import { loadPlantData, type PlantData } from '@/utils/plantData';
 
@@ -28,6 +29,7 @@ export default function Home() {
     target_calories: '',
     target_protein: ''
   });
+  const router = useRouter();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -41,7 +43,6 @@ export default function Home() {
     fetchData();
   }, []);
 
-  // Create memoized options for categories and plants
   const categoryOptions: Option[] = Array.from(
     new Set(plantData.map(plant => plant.category))
   ).map(category => ({
@@ -83,7 +84,8 @@ export default function Home() {
       });
 
       if (response.ok) {
-        alert('Preferences submitted successfully!');
+        const result = await response.json();
+        router.push(`/result?result=${encodeURIComponent(JSON.stringify(result))}`);
       } else {
         throw new Error('Failed to submit preferences');
       }
