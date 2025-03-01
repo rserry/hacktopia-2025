@@ -76,7 +76,7 @@ const ResultDisplay: React.FC<ResultProps> = ({ location, crops }) => {
                                     <td className="py-2 px-4 border-b border-gray-200 text-center">{crop.name}</td>
                                     <td className="py-2 px-4 border-b border-gray-200 text-center">{getClimateIcon(crop.climate)}</td>
                                     <td className="py-2 px-4 border-b border-gray-200 text-center">{crop.area}</td>
-                                    <td className="py-2 px-4 border-b border-gray-200 text-center">{crop.cost}</td>
+                                    <td className="py-2 px-4 border-b border-gray-200 text-center">{crop.cost.toFixed(2)}</td>
                                 </tr>
                             ))}
                         </tbody>
