@@ -42,7 +42,7 @@ const getClimateIcon = (climate: string) => {
         case "D":
             return <CloudRain style={{ width: '36px', height: '36px', color: 'blue' }} className="inline-block ml-2" />;
         case "E":
-            return <Snowflake style={{ width: '36px', height: '36px', color: 'white' }} className="inline-block ml-2" />;
+            return <Snowflake style={{ width: '36px', height: '36px', color: 'grey' }} className="inline-block ml-2" />;
         default:
             return null;
     }
