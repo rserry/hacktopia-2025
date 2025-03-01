@@ -2,6 +2,7 @@
 import React from 'react';
 import { useSearchParams } from 'next/navigation';
 import ResultDisplay from '@/components/ResultDisplay';
+import MapDisplay from '@/components/MapDisplay';
 
 const ResultPage: React.FC = () => {
   const searchParams = useSearchParams()
@@ -17,9 +18,10 @@ const ResultPage: React.FC = () => {
 
   return (
     <div className="min-h-screen p-8">
-      <main className="max-w-md mx-auto">
+      <main className="mx-auto">
         <h1 className="text-2xl font-bold mb-6">Calculation Result</h1>
         <ResultDisplay location={parsedResult.location} crops={parsedResult.crops} />
+        <MapDisplay selectedLocation={parsedResult.location} />
       </main>
     </div>
   );
