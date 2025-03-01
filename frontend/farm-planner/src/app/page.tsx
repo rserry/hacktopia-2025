@@ -33,7 +33,6 @@ export default function Home() {
     target_protein: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [apiResponse, setApiResponse] = useState<string | null>(null);
   const [apiError, setApiError] = useState<string>('');
   const router = useRouter();
 
@@ -65,6 +64,14 @@ export default function Home() {
     data: plant
   }));
 
+  const availableLikedPlantOptions = plantOptions.filter(
+    opt => !formData.disliked_crops.includes(opt.value)
+  );
+
+  const availableDislikedPlantOptions = plantOptions.filter(
+    opt => !formData.preferred_crops.includes(opt.value)
+  );
+
   const handleSelectChange = (selectedOptions: readonly Option[] | null, actionMeta: { name?: string }) => {
     if (!actionMeta.name) return;
 
@@ -77,7 +84,6 @@ export default function Home() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setApiResponse(null);
     setApiError('');
 
     try {
@@ -158,7 +164,7 @@ export default function Home() {
               name="likedPlants"
               value={plantOptions.filter(opt => formData.preferred_crops.includes(opt.value))}
               onChange={(opt) => handleSelectChange(opt as readonly Option[], { name: 'preferred_crops' })}
-              options={plantOptions}
+              options={availableLikedPlantOptions}
               className="react-select"
               placeholder="Search or select preferred plants"
               isClearable
@@ -176,7 +182,7 @@ export default function Home() {
               name="dislikedPlants"
               value={plantOptions.filter(opt => formData.disliked_crops.includes(opt.value))}
               onChange={(opt) => handleSelectChange(opt as readonly Option[], { name: 'disliked_crops' })}
-              options={plantOptions}
+              options={availableDislikedPlantOptions}
               className="react-select"
               placeholder="Search or select disliked plants"
               isClearable
@@ -250,15 +256,9 @@ export default function Home() {
             {isSubmitting ? 'Submitting...' : 'Submit Preferences'}
           </button>
 
-          {(apiResponse || apiError) && (
+          {apiError && (
             <div className="mt-4 p-4 rounded border">
-              {apiError ? (
-                <p className="text-red-600">{apiError}</p>
-              ) : (
-                <pre className="whitespace-pre-wrap text-sm">
-                  {JSON.stringify(apiResponse, null, 2)}
-                </pre>
-              )}
+              <p className="text-red-600">{apiError}</p>
             </div>
           )}
         </form>
