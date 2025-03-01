@@ -34,8 +34,8 @@ interface MapDisplayProps {
 const MapDisplay: React.FC<MapDisplayProps> = ({ selectedLocation }) => {
     const mapRef = useRef<HTMLDivElement>(null);
     const [scale, setScale] = useState({ x: 1, y: 1 });
+    const [isExpanded, setIsExpanded] = useState(false);
 
-    // Original image dimensions
     const ORIGINAL_WIDTH = 1792;
     const ORIGINAL_HEIGHT = 1024;
 
@@ -55,35 +55,69 @@ const MapDisplay: React.FC<MapDisplayProps> = ({ selectedLocation }) => {
         updateScale();
         window.addEventListener('resize', updateScale);
         return () => window.removeEventListener('resize', updateScale);
-    }, []);
+    }, [isExpanded]); // Re-calculate scale when expanded state changes
 
     const selectedLocationData = locationData.find(loc =>
         loc.name.toLowerCase() === selectedLocation?.toLowerCase()
     );
 
-    return (
-        <div className="w-full max-w-4xl mx-auto">
-            <div ref={mapRef} className="relative w-full">
-                <Image
-                    src="/map.webp"
-                    alt="Fantasy World Map"
-                    width={ORIGINAL_WIDTH}
-                    height={ORIGINAL_HEIGHT}
-                    className="w-full h-auto object-contain"
-                />
-                {selectedLocationData && (
-                    <div
-                        className="absolute z-10"
-                        style={{
-                            left: `${selectedLocationData.coordinates.x * scale.x}px`,
-                            top: `${selectedLocationData.coordinates.y * scale.y}px`,
-                            transform: 'translate(-50%, -100%)'
-                        }}
+    const LocationMarker = () => selectedLocationData && (
+        <div
+            className="absolute z-10"
+            style={{
+                left: `${selectedLocationData.coordinates.x * scale.x}px`,
+                top: `${selectedLocationData.coordinates.y * scale.y}px`,
+                transform: 'translate(-50%, -100%)'
+            }}
+        >
+            <div className={`${isExpanded ? 'w-6 h-6' : 'w-5 h-5'} bg-red-500 rounded-full border-2 border-white ${isExpanded ? 'shadow-lg' : 'shadow-md'}`} />
+        </div>
+    );
+
+    const MapContent = () => (
+        <div ref={mapRef} className="relative w-full h-full">
+            <Image
+                src="/map.webp"
+                alt="Fantasy World Map"
+                width={ORIGINAL_WIDTH}
+                height={ORIGINAL_HEIGHT}
+                className={`w-full h-full object-${isExpanded ? 'contain' : 'cover'}`}
+                priority={true}
+            />
+            <LocationMarker />
+        </div>
+    );
+
+    if (isExpanded) {
+        return (
+            <div
+                className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center p-4"
+                onClick={() => setIsExpanded(false)}
+            >
+                <div
+                    className="bg-white rounded-lg w-[95vw] h-[90vh] p-6 relative"
+                    onClick={e => e.stopPropagation()}
+                >
+                    <button
+                        onClick={() => setIsExpanded(false)}
+                        className="absolute top-4 right-4 z-50 p-2 rounded-full bg-white/80 hover:bg-white shadow-md transition-colors cursor-pointer hover:shadow-lg"
                     >
-                        <div className="w-5 h-5 bg-red-500 rounded-full border-2 border-white shadow-md" />
-                    </div>
-                )}
+                        <svg className="w-6 h-6 text-gray-600 hover:text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                    <MapContent />
+                </div>
             </div>
+        );
+    }
+
+    return (
+        <div
+            className="relative w-full max-w-4xl mx-auto cursor-pointer"
+            onClick={() => setIsExpanded(true)}
+        >
+            <MapContent />
         </div>
     );
 };
