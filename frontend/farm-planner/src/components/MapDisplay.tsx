@@ -35,6 +35,9 @@ const MapDisplay: React.FC<MapDisplayProps> = ({ selectedLocation }) => {
     const mapRef = useRef<HTMLDivElement>(null);
     const [scale, setScale] = useState({ x: 1, y: 1 });
     const [isExpanded, setIsExpanded] = useState(false);
+    const [imageDimensions, setImageDimensions] = useState({ width: 0, height: 0 });
+    // Add new state for container dimensions
+    const [containerDimensions, setContainerDimensions] = useState({ width: 0, height: 0 });
 
     const ORIGINAL_WIDTH = 1792;
     const ORIGINAL_HEIGHT = 1024;
@@ -42,12 +45,32 @@ const MapDisplay: React.FC<MapDisplayProps> = ({ selectedLocation }) => {
     useEffect(() => {
         const updateScale = () => {
             if (mapRef.current) {
-                const currentWidth = mapRef.current.offsetWidth;
-                const currentHeight = mapRef.current.offsetHeight;
+                const container = mapRef.current;
+                const containerWidth = container.offsetWidth;
+                const containerHeight = container.offsetHeight;
 
+                // Update container dimensions
+                setContainerDimensions({ width: containerWidth, height: containerHeight });
+
+                // Calculate actual image dimensions maintaining aspect ratio
+                const containerAspect = containerWidth / containerHeight;
+                const imageAspect = ORIGINAL_WIDTH / ORIGINAL_HEIGHT;
+
+                let imageWidth, imageHeight;
+                if (containerAspect > imageAspect) {
+                    // Container is wider than image aspect
+                    imageHeight = containerHeight;
+                    imageWidth = imageHeight * imageAspect;
+                } else {
+                    // Container is taller than image aspect
+                    imageWidth = containerWidth;
+                    imageHeight = imageWidth / imageAspect;
+                }
+
+                setImageDimensions({ width: imageWidth, height: imageHeight });
                 setScale({
-                    x: currentWidth / ORIGINAL_WIDTH,
-                    y: currentHeight / ORIGINAL_HEIGHT
+                    x: imageWidth / ORIGINAL_WIDTH,
+                    y: imageHeight / ORIGINAL_HEIGHT
                 });
             }
         };
@@ -65,8 +88,8 @@ const MapDisplay: React.FC<MapDisplayProps> = ({ selectedLocation }) => {
         <div
             className="absolute z-10"
             style={{
-                left: `${selectedLocationData.coordinates.x * scale.x}px`,
-                top: `${selectedLocationData.coordinates.y * scale.y}px`,
+                left: `${(containerDimensions.width - imageDimensions.width) / 2 + selectedLocationData.coordinates.x * scale.x}px`,
+                top: `${(containerDimensions.height - imageDimensions.height) / 2 + selectedLocationData.coordinates.y * scale.y}px`,
                 transform: 'translate(-50%, -100%)'
             }}
         >
