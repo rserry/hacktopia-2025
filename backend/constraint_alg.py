@@ -183,7 +183,7 @@ def solve_budget(budget, target_prots, target_cals, areas, proteins, calories, d
 
     return amnt_crops.value(), areas, proteins, calories
 
-def calculate_result(preferred_categories: set, preferred_crops: set, disliked_crops: list, budget: float, target_calories: float, target_protein: float):
+def calculate_result(preferred_categories: int, preferred_crops: int, disliked_crops: list, budget: float, target_calories: float, target_protein: float):
     transformed_preferred_crops = np.isin(crops, list(preferred_crops)).astype(int)
     transformed_aversion_crops = np.isin(crops, list(disliked_crops)).astype(int)
     transformed_categories = np.isin(categories, list(preferred_categories)).astype(int)
@@ -207,4 +207,4 @@ def calculate_result(preferred_categories: set, preferred_crops: set, disliked_c
 
     return result
 
-calculate_result({"Grains & Legumes"}, {"Apple", "Papaya", "Radish"}, {}, 1000, 20000, 10)
+print(calculate_result({"Grains & Legumes"}, {"Cilantro"}, {"Orange"}, 100000000000, 2000, 50))
