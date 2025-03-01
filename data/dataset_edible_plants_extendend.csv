@@ -1,0 +1,239 @@
+Name,Latin Name,Ideal growth Climate,Watering Needs,Time to Consumable (days),Weight when Full Grown (kg),Kcal per 100g,Proteins per 100g (g),Surface per 1kg (m²/kg),Value per square meter (EUR/m²)
+Apple,Malum minor,Arid,High,192,4.11,250.8,0.7,0.93,5.06
+Banana,Musa genuina,Arid,Low,291,1.33,151.9,0.8,0.75,4.5
+Mango,Mangifera latifolia,Mediterranean,Moderate,97,0.71,78.8,3.2,0.95,6.56
+Orange,Citrus fixa,Polar,Low,221,0.95,373.3,8.6,0.36,9.25
+Peach,Prunus indica,Arid,High,83,0.11,318.2,6.5,1.92,4.17
+Pear,Pyrus latifolia,Tropical,Moderate,273,1.81,83.7,5.9,1.63,8.98
+Papaya,Carica vulgaris,Mediterranean,Moderate,44,3.86,286.5,0.9,1.54,5.87
+Pineapple,Ananas indica,Tropical,Low,145,4.02,65.9,0.7,0.63,9.3
+Watermelon,Citrullus indica,Temperate,Moderate,287,1.21,70.6,2.4,1.83,1.03
+Cucumber,Cucumis genuina,Temperate,Low,40,2.39,174.5,4.6,0.74,4.1
+Tomato,Tomato major,Temperate,Moderate,94,0.34,266.8,4.8,1.09,5.1
+Avocado,Avocado vulgaris,Mediterranean,High,168,3.49,222.9,4.4,0.68,8.12
+Spinach,Spinach fixa,Temperate,Moderate,284,0.67,53.5,5.1,0.26,2.52
+Kale,Kale sapiens,Temperate,Moderate,360,0.58,328.7,3.5,1.77,7.34
+Lettuce,Lettuce sapiens,Arid,Low,174,3.17,193.5,4.4,1.3,3.62
+Swiss Chard,Swiss chard major,Mediterranean,Low,324,2.35,107.2,3.4,0.89,3.18
+Beet Greens,Beet greens sapiens,Arid,Low,327,2.25,108.7,4.8,1.35,2.21
+Radish,Radish major,Polar,Moderate,117,1.86,186.5,7.5,0.76,7.65
+Carrot,Carrot minor,Mediterranean,High,304,3.76,107.3,7.0,1.43,7.24
+Broccoli,Broccoli latifolia,Arid,Moderate,85,3.25,391.2,7.3,0.95,4.43
+Cauliflower,Cauliflower fixa,Mediterranean,High,119,4.51,147.9,4.7,0.84,4.17
+Cabbage,Cabbage sapiens,Polar,Moderate,306,1.67,225.2,8.4,1.48,9.87
+Brussels Sprouts,Brussels sprouts sapiens,Temperate,Moderate,342,3.54,134.2,3.3,0.88,6.39
+Zucchini,Zucchini indica,Polar,High,262,0.32,213.5,0.5,0.85,3.11
+Squash,Squash genuina,Mediterranean,High,311,1.7,119.4,9.7,0.73,4.39
+Pumpkin,Pumpkin sapiens,Tropical,Low,253,3.17,184.2,4.0,0.63,1.62
+Sweet Potato,Sweet potato genuina,Mediterranean,High,66,3.4,361.7,4.0,1.95,9.47
+Potato,Potato minor,Temperate,Moderate,135,2.43,64.8,1.7,1.56,4.66
+Corn,Corn sapiens,Temperate,High,309,3.77,289.5,6.2,1.63,4.98
+Rice,Rice minor,Arid,High,101,1.79,215.0,5.6,1.42,4.54
+Wheat,Wheat genuina,Temperate,High,194,2.76,176.1,5.0,1.41,1.75
+Barley,Barley vulgaris,Arid,High,81,4.0,208.4,3.9,0.17,9.29
+Oats,Oats latifolia,Tropical,Low,109,4.32,94.7,4.8,0.13,8.67
+Quinoa,Quinoa major,Temperate,Low,320,1.12,359.4,4.7,1.79,3.24
+Lentils,Lentils genuina,Polar,Moderate,81,2.27,384.2,3.0,1.98,8.54
+Chickpeas,Chickpeas vulgaris,Temperate,Moderate,35,0.33,277.1,1.2,1.99,5.08
+Peas,Peas latifolia,Mediterranean,High,198,2.05,283.0,7.6,0.31,5.08
+Beans,Beans sapiens,Polar,Low,87,4.28,103.4,8.3,1.36,5.35
+Soybeans,Soybeans minor,Polar,High,250,4.02,303.6,7.3,1.49,4.8
+Almond,Almond indica,Temperate,Low,202,2.85,138.6,9.8,1.89,8.45
+Walnut,Walnut sapiens,Arid,High,303,0.92,196.4,5.4,1.98,3.3
+Pecan,Pecan indica,Tropical,High,163,1.72,256.4,2.5,1.6,8.39
+Hazelnut,Hazelnut genuina,Tropical,High,103,4.68,91.2,4.4,1.07,3.14
+Chestnut,Chestnut genuina,Tropical,Moderate,268,3.72,187.4,3.8,0.15,1.66
+Sunflower Seeds,Sunflower seeds latifolia,Mediterranean,High,278,4.49,285.3,3.5,0.96,9.5
+Sesame Seeds,Sesame seeds genuina,Polar,Low,91,2.12,95.5,7.8,0.16,8.18
+Flax Seeds,Flax seeds latifolia,Tropical,High,41,4.36,384.4,7.8,1.17,4.28
+Chia Seeds,Chia seeds latifolia,Polar,Low,257,4.97,36.1,7.4,1.36,4.38
+Basil,Basil minor,Mediterranean,High,71,3.63,156.3,5.8,0.68,3.08
+Mint,Mint minor,Arid,Low,48,4.25,350.3,3.9,0.82,3.08
+Parsley,Parsley genuina,Temperate,High,55,2.41,292.3,2.3,1.42,8.93
+Cilantro,Cilantro genuina,Arid,Low,162,2.55,63.9,1.2,1.98,4.74
+Thyme,Thyme vulgaris,Tropical,High,143,1.95,51.4,2.0,0.3,6.47
+Rosemary,Rosemary major,Polar,High,227,4.4,272.0,2.7,1.62,1.59
+Sage,Sage fixa,Tropical,Low,262,1.82,32.5,8.7,0.92,6.34
+Dill,Dill vulgaris,Temperate,Moderate,43,3.81,264.9,2.3,0.98,7.42
+Tarragon,Tarragon vulgaris,Polar,High,239,4.79,138.6,0.7,0.15,9.26
+Oregano,Oregano genuina,Arid,High,40,3.01,109.8,6.9,1.28,7.88
+Lavender,Lavender sapiens,Polar,High,172,0.44,366.6,4.3,1.08,7.25
+Lemon Balm,Lemon balm minor,Mediterranean,Moderate,306,4.56,188.4,5.6,0.36,5.01
+Fennel,Fennel fixa,Polar,High,350,3.94,199.5,4.1,1.11,6.28
+Celery,Celery latifolia,Tropical,Moderate,202,0.83,377.1,6.6,1.04,3.72
+Bell Pepper,Bell pepper fixa,Polar,High,98,2.19,49.7,0.6,0.32,3.61
+Chili Pepper,Chili pepper major,Polar,Low,115,2.05,305.5,4.8,0.63,5.06
+Okra,Okra genuina,Mediterranean,High,291,1.5,82.1,3.9,1.35,5.46
+Eggplant,Eggplant major,Mediterranean,High,154,2.89,192.4,0.6,0.77,7.54
+Artichoke,Artichoke sapiens,Arid,Moderate,322,3.27,81.7,4.0,1.83,4.07
+Asparagus,Asparagus latifolia,Temperate,High,314,3.55,323.7,0.7,1.82,8.53
+Bok Choy,Bok choy vulgaris,Tropical,Moderate,289,3.73,114.5,9.0,0.88,9.62
+Mustard Greens,Mustard greens vulgaris,Polar,Low,163,4.34,201.1,4.2,1.54,9.85
+Collard Greens,Collard greens minor,Mediterranean,Low,98,0.16,210.7,3.0,0.2,7.14
+Arugula,Arugula minor,Polar,Low,126,1.09,237.5,1.9,1.36,8.4
+Endive,Endive sapiens,Arid,Low,339,3.24,39.3,3.0,0.54,1.22
+Escarole,Escarole latifolia,Polar,High,89,4.65,163.6,1.4,1.92,1.85
+Green Onion,Green onion indica,Arid,High,185,3.4,59.6,3.1,0.18,8.04
+Garlic,Garlic genuina,Temperate,Moderate,30,0.76,210.4,2.1,0.26,2.6
+Leek,Leek minor,Arid,Low,253,3.05,283.7,3.0,1.79,5.92
+Shallot,Shallot genuina,Polar,High,237,4.37,201.0,6.6,1.83,5.69
+Onion,Onion vulgaris,Arid,Moderate,255,2.16,178.3,9.0,0.85,8.01
+Ginger,Ginger latifolia,Arid,Moderate,137,0.19,263.8,6.3,1.62,6.26
+Turmeric,Turmeric minor,Tropical,Low,250,0.91,321.7,3.1,1.11,6.12
+Horseradish,Horseradish latifolia,Polar,High,312,2.37,309.2,6.8,0.81,9.9
+Daikon,Daikon major,Temperate,Low,159,4.13,268.5,6.2,0.17,8.3
+Turnip,Turnip fixa,Arid,High,251,2.35,149.7,4.5,1.45,3.38
+Rutabaga,Rutabaga sapiens,Polar,Moderate,97,2.45,118.8,7.1,1.96,1.28
+Yam,Yam genuina,Mediterranean,High,120,1.1,53.4,4.1,1.24,7.7
+Parsnip,Parsnip indica,Arid,Low,313,4.93,330.8,8.2,1.59,2.85
+Kohlrabi,Kohlrabi genuina,Tropical,Low,223,4.48,371.6,1.3,0.32,4.67
+Jerusalem Artichoke,Jerusalem artichoke fixa,Temperate,High,292,4.36,266.2,9.7,1.33,4.96
+Malabar Spinach,Malabar spinach latifolia,Temperate,Low,74,0.72,106.7,9.8,0.64,4.65
+Purslane,Purslane major,Mediterranean,High,132,1.87,362.7,2.0,0.91,2.24
+Dandelion Greens,Dandelion greens indica,Tropical,High,57,2.98,174.5,0.6,0.9,2.25
+Nasturtium,Nasturtium indica,Tropical,Low,270,3.7,104.9,0.5,0.24,7.59
+Sorrel,Sorrel indica,Tropical,Moderate,114,2.56,34.0,7.3,0.57,5.68
+Rhubarb,Rhubarb vulgaris,Polar,High,74,3.54,372.7,4.6,1.7,6.85
+Gooseberry,Gooseberry genuina,Mediterranean,High,341,3.84,282.5,5.3,0.95,6.55
+Currant,Currant major,Arid,Moderate,304,2.76,344.4,5.9,1.23,8.6
+Cranberry,Cranberry latifolia,Temperate,Low,279,2.9,88.0,6.9,1.91,6.95
+Blueberry,Blueberry indica,Tropical,High,238,1.74,343.6,2.7,0.94,4.6
+Blackberry,Blackberry vulgaris,Polar,Moderate,264,2.93,272.6,7.2,1.59,7.07
+Raspberry,Raspberry major,Temperate,Low,278,1.37,381.9,1.9,0.52,1.87
+Strawberry,Strawberry genuina,Tropical,High,147,2.13,129.6,8.3,1.92,6.9
+Mulberry,Mulberry major,Arid,High,323,2.4,109.0,1.8,1.74,4.12
+Fig,Fig fixa,Arid,High,96,0.52,18.8,4.2,0.82,3.0
+Kiwi,Kiwi minor,Arid,Moderate,60,2.42,289.1,4.6,1.85,8.15
+Guava,Guava genuina,Polar,Moderate,119,2.53,335.5,7.0,0.9,1.85
+Lychee,Lychee genuina,Arid,Moderate,171,4.61,52.1,5.5,1.73,1.42
+Durian,Durian sapiens,Polar,High,248,0.75,248.4,9.8,0.87,7.35
+Rambutan,Rambutan fixa,Tropical,Moderate,229,4.18,74.0,3.1,1.96,1.89
+Passion Fruit,Passion fruit minor,Temperate,Low,147,0.25,12.6,4.9,0.83,4.69
+Jackfruit,Jackfruit major,Temperate,High,43,2.02,185.2,6.9,0.33,8.21
+Breadfruit,Breadfruit genuina,Arid,Moderate,153,0.3,238.4,1.5,0.66,3.18
+Starfruit,Starfruit major,Arid,High,295,2.9,20.7,5.0,0.77,5.4
+Dragonfruit,Dragonfruit vulgaris,Mediterranean,Moderate,162,2.68,193.7,0.9,1.36,4.62
+Tamarind,Tamarind fixa,Polar,Moderate,171,1.36,263.5,7.0,0.64,2.4
+Pomegranate,Pomegranate latifolia,Tropical,High,209,2.57,178.0,9.7,1.91,9.06
+Coconut,Coconut vulgaris,Mediterranean,Low,364,4.89,314.1,1.1,1.92,7.63
+Cashew,Cashew minor,Arid,High,271,1.6,299.1,0.7,1.32,9.81
+Pistachio,Pistachio genuina,Tropical,Low,58,3.48,345.9,4.2,0.19,3.92
+Macadamia Nut,Macadamia nut fixa,Polar,Low,183,3.05,157.2,7.5,0.45,7.45
+Brazil Nut,Brazil nut major,Tropical,High,58,2.56,155.3,1.4,0.2,7.78
+Betel Nut,Betel nut major,Tropical,Low,229,1.56,82.8,8.7,1.85,8.78
+Carob,Carob minor,Arid,Moderate,323,3.36,378.5,3.0,1.06,6.68
+Cocoa Bean,Cocoa bean sapiens,Arid,Low,133,2.16,11.5,2.7,0.43,5.53
+Coffee Bean,Coffee bean genuina,Mediterranean,Low,51,3.34,256.1,3.2,1.0,3.16
+Vanilla,Vanilla minor,Arid,Low,122,0.16,80.9,3.9,1.39,4.13
+Dates,Dates sapiens,Temperate,High,124,1.12,313.3,1.5,1.27,9.74
+Olives,Olives major,Arid,High,232,3.01,280.2,2.7,1.52,6.5
+Caper,Caper major,Polar,High,38,3.35,335.7,3.9,0.96,5.43
+Figs,Figs latifolia,Temperate,High,47,3.3,311.4,8.2,0.71,9.94
+Chestnut,Chestnut genuina,Polar,Low,34,1.52,85.1,6.5,1.71,6.68
+Lotus Root,Lotus root sapiens,Temperate,Moderate,73,1.81,275.8,9.4,1.06,9.42
+Arrowroot,Arrowroot fixa,Polar,Moderate,135,3.88,75.5,2.9,0.24,5.53
+Taro,Taro fixa,Tropical,Low,180,4.37,223.7,2.7,0.65,8.61
+Cassava,Cassava indica,Tropical,Low,206,4.09,341.5,7.2,1.48,1.44
+Seaweed,Seaweed latifolia,Tropical,High,188,4.18,72.7,6.4,1.15,7.21
+Nori,Nori minor,Tropical,Moderate,84,1.2,328.5,6.8,0.51,1.55
+Wakame,Wakame vulgaris,Tropical,High,146,4.62,175.2,9.5,1.9,9.68
+Kombu,Kombu indica,Polar,Low,65,1.22,213.2,9.5,0.33,9.12
+Alfalfa Sprouts,Alfalfa sprouts minor,Mediterranean,High,233,0.37,61.2,1.2,1.88,7.02
+Mung Bean Sprouts,Mung bean sprouts sapiens,Mediterranean,Low,302,4.64,174.6,7.4,0.26,9.57
+Chickweed,Chickweed minor,Arid,High,273,2.72,395.2,6.0,0.15,3.87
+Amaranth,Amaranth major,Temperate,Moderate,43,4.4,256.2,8.3,0.46,6.3
+Quail Grass,Quail grass fixa,Temperate,High,56,0.99,226.3,6.4,1.7,3.06
+Agave,Agave sapiens,Tropical,High,291,2.21,50.5,9.6,0.37,1.26
+Aloe Vera,Aloe vera indica,Temperate,Moderate,141,1.75,75.1,6.5,1.78,1.83
+Bamboo Shoots,Bamboo shoots fixa,Temperate,Moderate,333,1.9,146.7,8.8,1.42,8.28
+Burdock Root,Burdock root genuina,Polar,High,109,3.58,105.9,9.6,0.96,3.89
+Cattail,Cattail major,Tropical,Low,67,0.45,53.8,0.8,1.41,4.58
+Lamb's Quarters,Lamb's quarters vulgaris,Polar,High,87,3.42,241.5,2.7,0.34,6.03
+Plantain,Plantain major,Polar,High,312,2.45,22.4,7.7,1.35,9.26
+Prickly Pear Cactus,Prickly pear cactus fixa,Polar,Moderate,131,0.36,163.3,9.2,0.41,8.1
+Watercress,Watercress indica,Polar,High,249,4.35,137.1,3.2,0.42,7.8
+Hibiscus,Hibiscus indica,Polar,Moderate,222,0.28,298.7,8.3,1.0,9.62
+Rose Hips,Rose hips indica,Tropical,High,175,2.94,287.3,6.8,1.46,4.69
+Elderberry,Elderberry indica,Temperate,Moderate,194,2.17,351.0,7.7,0.17,7.78
+Mulberry,Mulberry genuina,Temperate,High,119,4.09,200.7,5.3,0.48,2.78
+Jujube,Jujube major,Temperate,Low,271,2.13,253.1,5.6,0.34,1.41
+Ackee,Ackee indica,Mediterranean,Moderate,58,0.65,29.8,3.0,1.64,1.71
+Breadnut,Breadnut genuina,Arid,Moderate,214,2.1,289.5,9.2,0.35,2.92
+Ackee,Ackee indica,Arid,Low,177,1.09,268.4,9.7,0.92,9.65
+Acerola,Acerola vulgaris,Polar,Moderate,277,1.91,129.7,3.2,0.15,7.39
+Sapote,Sapote fixa,Arid,Moderate,361,1.64,27.0,7.7,1.23,7.95
+Loquat,Loquat fixa,Arid,Low,81,0.47,170.8,3.2,0.2,1.55
+Santol,Santol indica,Mediterranean,High,119,2.9,29.5,4.7,0.58,4.94
+Longan,Longan major,Temperate,Moderate,255,3.8,105.5,3.1,0.57,5.24
+Mangosteen,Mangosteen sapiens,Temperate,Low,128,1.46,283.3,6.8,0.21,9.32
+Salak,Salak genuina,Mediterranean,High,31,4.67,259.6,7.3,0.5,2.04
+Miracle Fruit,Miracle fruit minor,Temperate,High,68,4.48,193.3,1.9,0.31,1.3
+Wolfberry,Wolfberry indica,Tropical,High,213,3.68,350.8,7.4,1.78,8.28
+Aronia,Aronia minor,Temperate,Low,125,1.26,385.8,9.9,1.47,2.06
+Medlar,Medlar minor,Arid,Low,316,3.4,213.4,1.1,1.99,8.57
+Tamarillo,Tamarillo major,Temperate,Moderate,355,0.42,197.7,7.2,0.92,9.65
+Pepino,Pepino fixa,Polar,Low,334,1.97,46.7,5.0,0.4,8.17
+Chayote,Chayote minor,Tropical,Moderate,249,2.52,174.8,6.3,0.11,8.96
+Bitter Melon,Bitter melon latifolia,Mediterranean,High,269,1.39,12.2,7.7,0.31,6.1
+Winter Melon,Winter melon genuina,Polar,Moderate,201,2.54,318.2,9.9,1.47,3.08
+Snake Gourd,Snake gourd latifolia,Arid,Low,109,4.87,92.7,1.1,1.51,3.29
+Sponge Gourd,Sponge gourd indica,Arid,High,304,1.95,311.0,9.1,0.7,9.72
+Teff,Teff vulgaris,Tropical,Moderate,42,0.83,154.3,3.1,1.72,6.29
+Einkorn,Einkorn sapiens,Polar,Moderate,295,1.4,329.5,2.6,0.64,3.54
+Spelt,Spelt major,Temperate,Moderate,36,3.38,72.8,4.0,0.4,2.83
+Sorghum,Sorghum major,Polar,Low,281,0.57,359.4,4.2,1.2,6.77
+Millet,Millet vulgaris,Polar,Moderate,60,3.34,362.8,8.2,0.79,3.56
+Rye,Rye fixa,Temperate,Low,232,2.12,372.5,8.2,0.33,1.81
+Triticale,Triticale latifolia,Mediterranean,High,323,1.12,261.4,8.0,0.45,4.46
+Kamut,Kamut latifolia,Arid,Moderate,197,1.06,191.9,1.5,1.99,4.71
+Buckwheat,Buckwheat major,Tropical,Moderate,321,0.84,248.2,7.3,1.36,7.41
+Wild Rice,Wild rice sapiens,Mediterranean,Moderate,138,4.13,143.8,6.9,0.88,3.6
+Fonio,Fonio vulgaris,Arid,High,101,1.56,325.1,3.1,0.57,5.95
+Farro,Farro major,Tropical,Low,338,0.22,30.0,3.8,1.51,3.27
+Adzuki Beans,Adzuki beans major,Arid,Low,238,2.34,297.6,5.7,0.69,2.41
+Black Beans,Black beans indica,Arid,High,47,1.35,373.0,9.0,0.14,1.56
+Kidney Beans,Kidney beans major,Temperate,High,346,2.19,290.5,6.6,0.43,9.79
+Navy Beans,Navy beans fixa,Tropical,Low,301,2.2,179.9,4.5,1.86,9.7
+Pinto Beans,Pinto beans genuina,Polar,Moderate,299,3.78,49.1,2.8,0.16,3.99
+Cranberry Beans,Cranberry beans vulgaris,Arid,High,215,4.27,189.4,4.5,0.31,2.21
+Lupin Beans,Lupin beans fixa,Polar,Moderate,316,2.85,89.2,7.5,1.35,2.06
+Black-Eyed Peas,Black-eyed peas genuina,Arid,Low,203,2.17,166.7,6.4,1.17,4.67
+Lentils,Lentils fixa,Mediterranean,High,215,4.12,243.6,9.7,1.0,8.74
+Split Peas,Split peas indica,Tropical,High,317,3.5,282.5,5.1,0.58,7.45
+Chickpea,Chickpea sapiens,Polar,Low,200,2.26,81.0,8.7,1.99,2.46
+Cannellini Bean,Cannellini bean genuina,Mediterranean,High,137,2.55,73.1,5.8,0.39,5.55
+Fava Bean,Fava bean indica,Arid,High,123,3.28,104.9,2.8,0.53,7.44
+Lima Bean,Lima bean indica,Tropical,High,160,3.55,107.9,8.5,1.33,6.02
+Mung Bean,Mung bean latifolia,Mediterranean,High,49,4.36,153.8,7.7,1.13,1.18
+Soybean,Soybean indica,Mediterranean,Low,355,3.49,361.9,3.0,0.29,5.71
+Winged Bean,Winged bean latifolia,Mediterranean,Low,343,4.41,305.7,4.8,1.52,5.3
+Hyacinth Bean,Hyacinth bean sapiens,Arid,Low,88,4.72,309.9,8.3,0.55,3.18
+Peanuts,Peanuts major,Mediterranean,Moderate,82,3.25,159.1,9.6,1.78,6.51
+Pea Shoots,Pea shoots genuina,Tropical,Moderate,327,0.61,321.2,3.5,0.49,6.52
+Wasabi,Wasabi vulgaris,Arid,High,321,1.42,221.9,1.4,0.27,1.52
+Sea Kale,Sea kale minor,Polar,Moderate,157,4.78,381.9,2.6,1.69,1.2
+Lovage,Lovage major,Polar,Low,193,3.91,77.3,7.4,1.27,9.29
+Tarragon,Tarragon latifolia,Polar,High,281,1.56,15.7,6.5,1.91,9.47
+Lemon Thyme,Lemon thyme genuina,Arid,Low,181,4.07,223.3,9.3,1.6,2.02
+Wild Garlic,Wild garlic indica,Arid,Moderate,345,4.99,27.6,1.0,0.5,9.99
+Ramsons,Ramsons fixa,Arid,High,312,3.6,324.3,3.4,0.46,4.43
+Stinging Nettle,Stinging nettle major,Polar,Moderate,320,1.45,111.0,4.6,1.33,5.04
+Pokeweed,Pokeweed latifolia,Arid,Low,259,3.05,369.2,3.8,0.29,9.47
+Marshmallow,Marshmallow sapiens,Tropical,Low,283,4.94,185.1,5.7,0.22,3.5
+Sassafras,Sassafras minor,Mediterranean,Moderate,138,1.43,22.7,8.4,1.14,7.26
+Hops,Hops genuina,Mediterranean,Low,197,2.47,206.7,4.8,1.78,6.19
+Sweet Violet,Sweet violet genuina,Mediterranean,High,78,3.6,223.2,5.1,0.79,7.03
+Blue Cornflower,Blue cornflower genuina,Temperate,Low,73,0.4,370.5,8.0,1.41,4.37
+Borage,Borage genuina,Arid,Low,353,2.32,210.1,2.4,0.92,6.92
+Calendula,Calendula sapiens,Arid,Low,65,1.99,55.5,3.3,0.24,5.57
+Chamomile,Chamomile fixa,Temperate,Moderate,325,2.22,18.5,6.9,0.48,9.74
+Carnation,Carnation fixa,Temperate,High,357,1.99,245.8,6.2,1.19,8.95
+Chrysanthemum,Chrysanthemum sapiens,Polar,Low,110,2.55,134.4,4.5,1.78,3.22
+Lavender,Lavender minor,Mediterranean,High,124,3.31,127.2,9.6,1.44,2.28
+Marigold,Marigold minor,Polar,Low,281,4.3,340.9,1.4,0.61,7.85
+Nasturtium,Nasturtium vulgaris,Arid,Moderate,194,4.92,38.6,4.0,0.22,4.24
+Pansy,Pansy sapiens,Tropical,Moderate,218,4.66,259.6,1.9,1.18,5.22
+Rose,Rose indica,Temperate,High,168,1.62,49.5,9.0,0.85,7.04
+Safflower,Safflower genuina,Temperate,High,300,3.61,31.5,2.6,0.68,2.47
+Sunflower,Sunflower major,Mediterranean,Moderate,213,0.78,79.2,5.8,1.61,4.2
+Zucchini Blossoms,Zucchini blossoms latifolia,Arid,Moderate,213,2.87,240.0,3.2,1.79,7.2
