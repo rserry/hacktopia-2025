@@ -1,4 +1,5 @@
 'use client';
+
 import { useState, useEffect } from "react";
 import Select from 'react-select';
 import { loadPlantData, type PlantData } from '@/utils/plantData';
@@ -19,6 +20,7 @@ interface FormData {
 }
 
 export default function Home() {
+  const [isLoading, setIsLoading] = useState(true);
   const [plantData, setPlantData] = useState<PlantData[]>([]);
   const [formData, setFormData] = useState<FormData>({
     preferred_categories: [],
@@ -28,20 +30,25 @@ export default function Home() {
     target_calories: '',
     target_protein: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [apiResponse, setApiResponse] = useState<string | null>(null);
+  const [apiError, setApiError] = useState<string>('');
 
   useEffect(() => {
     const fetchData = async () => {
+      setIsLoading(true);
       try {
         const data = await loadPlantData();
         setPlantData(data);
       } catch (error) {
         console.error('Error loading plant data:', error);
+      } finally {
+        setIsLoading(false);
       }
     };
     fetchData();
   }, []);
 
-  // Create memoized options for categories and plants
   const categoryOptions: Option[] = Array.from(
     new Set(plantData.map(plant => plant.category))
   ).map(category => ({
@@ -66,6 +73,10 @@ export default function Home() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSubmitting(true);
+    setApiResponse(null);
+    setApiError('');
+
     try {
       const numericFormData = {
         ...formData,
@@ -83,13 +94,16 @@ export default function Home() {
       });
 
       if (response.ok) {
-        alert('Preferences submitted successfully!');
+        const data = await response.json();
+        setApiResponse(data);
       } else {
         throw new Error('Failed to submit preferences');
       }
     } catch (error) {
       console.error('Error:', error);
-      alert('Failed to submit preferences');
+      setApiError('Failed to submit preferences');
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -100,6 +114,16 @@ export default function Home() {
       [name]: value
     }));
   };
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen p-8">
+        <main className="max-w-md mx-auto">
+          <h1 className="text-2xl font-bold mb-6">Loading plant data...</h1>
+        </main>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen p-8">
@@ -216,10 +240,26 @@ export default function Home() {
 
           <button
             type="submit"
-            className="w-full bg-green-600 text-white py-2 px-4 rounded hover:bg-green-700 transition-colors"
+            disabled={isSubmitting}
+            className={`w-full py-2 px-4 rounded transition-colors ${isSubmitting
+              ? 'bg-green-400 cursor-not-allowed'
+              : 'bg-green-600 hover:bg-green-700'
+              } text-white`}
           >
-            Submit Preferences
+            {isSubmitting ? 'Submitting...' : 'Submit Preferences'}
           </button>
+
+          {(apiResponse || apiError) && (
+            <div className="mt-4 p-4 rounded border">
+              {apiError ? (
+                <p className="text-red-600">{apiError}</p>
+              ) : (
+                <pre className="whitespace-pre-wrap text-sm">
+                  {JSON.stringify(apiResponse, null, 2)}
+                </pre>
+              )}
+            </div>
+          )}
         </form>
       </main>
     </div>
