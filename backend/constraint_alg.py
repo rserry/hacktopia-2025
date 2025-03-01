@@ -204,7 +204,4 @@ def calculate_result(preferred_categories: list, preferred_crops: list, disliked
     result["location"] = good_location
     result["crops"] = [{"name": name, "area": area, "cost": cost, "climate": climate} for name, area, cost, climate in zip(crop_names, total_areas, total_costs, corr_climates)]
 
-
     return result
-
-# print(calculate_result(["Grains & Legumes"], ["Cilantro"], ["Orange"], 100000000000, 2000, 50))
