@@ -114,13 +114,14 @@ export default function Home() {
         },
         body: JSON.stringify(numericFormData),
       });
-
-      if (response.ok) {
+      // console.log(response);
+      // if (response.ok) {
         const result = await response.json();
+        // console.log('Result:', result);
         router.push(`/result?result=${encodeURIComponent(JSON.stringify(result))}`);
-      } else {
-        throw new Error('Failed to submit preferences');
-      }
+      // } else {
+        // throw new Error('Failed to submit preferences');
+      // }
     } catch (error) {
       console.error('Error:', error);
       setApiError('Failed to submit preferences');
