@@ -21,6 +21,19 @@ interface FormData {
   target_protein: string;
 }
 
+import { StylesConfig, ControlProps, CSSObjectWithLabel } from 'react-select';
+
+const selectStyles: StylesConfig<Option, true> = {
+  control: (base: CSSObjectWithLabel, props: ControlProps<Option, true>) => ({
+    ...base,
+    borderColor: props.isFocused ? '#22c55e' : '#e5e7eb', // green-500 when focused, gray-200 when not
+    boxShadow: props.isFocused ? '0 0 0 2px rgb(34 197 94 / 0.2)' : 'none',
+    '&:hover': {
+      borderColor: props.isFocused ? '#22c55e' : '#e5e7eb'
+    }
+  })
+};
+
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
   const [plantData, setPlantData] = useState<PlantData[]>([]);
@@ -158,6 +171,7 @@ export default function Home() {
                   isSearchable
                   isMulti
                   closeMenuOnSelect={false}
+                  styles={selectStyles}
                 />
               </div>
 
@@ -176,6 +190,7 @@ export default function Home() {
                   isSearchable
                   isMulti
                   closeMenuOnSelect={false}
+                  styles={selectStyles}
                 />
               </div>
 
@@ -194,6 +209,7 @@ export default function Home() {
                   isSearchable
                   isMulti
                   closeMenuOnSelect={false}
+                  styles={selectStyles}
                 />
               </div>
 
@@ -209,8 +225,9 @@ export default function Home() {
                       min="0"
                       value={formData.budget}
                       onChange={handleChange}
-                      className="w-full p-2 border rounded pl-3 pr-12 focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                      className="w-full p-2 border border-gray-200 rounded pl-3 pr-12 focus:ring-2 focus:ring-green-500/20 focus:border-green-500 outline-none"
                       placeholder="100000"
+                      required
                     />
                     <span className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500">$</span>
                   </div>
@@ -226,7 +243,7 @@ export default function Home() {
                       min="0"
                       value={formData.target_calories}
                       onChange={handleChange}
-                      className="w-full p-2 border rounded pl-3 pr-12 focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                      className="w-full p-2 border border-gray-200 rounded pl-3 pr-12 focus:ring-2 focus:ring-green-500/20 focus:border-green-500 outline-none"
                       placeholder="2000"
                     />
                     <span className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500">kcal</span>
@@ -243,7 +260,7 @@ export default function Home() {
                       min="0"
                       value={formData.target_protein}
                       onChange={handleChange}
-                      className="w-full p-2 border rounded pl-3 pr-12 focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                      className="w-full p-2 border border-gray-200 rounded pl-3 pr-12 focus:ring-2 focus:ring-green-500/20 focus:border-green-500 outline-none"
                       placeholder="50"
                     />
                     <span className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500">g</span>
