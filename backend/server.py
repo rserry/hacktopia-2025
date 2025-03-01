@@ -2,7 +2,7 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import List
-# from constraint_alg import calculate_result
+from constraint_alg import calculate_result
 
 app = FastAPI()
 
@@ -19,10 +19,6 @@ class InputData(BaseModel):
     budget: float
     target_calories: float | None
     target_protein: float | None
-
-def calculate_result(preferred_categories: list, preferred_crops: list, disliked_crops: list, budget: float, target_calories: float, target_protein: float):
-    result = {"location": "A", "crops": {"B": 10, "C": 20}}
-    return result
 
 @app.post("/calculate")
 async def calculate(input_data: InputData):
