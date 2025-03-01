@@ -133,136 +133,144 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen p-8">
-      <main className="max-w-md mx-auto">
-        <h1 className="text-2xl font-bold mb-6">Plant Preferences</h1>
+    <div className="min-h-screen bg-gradient-to-b from-green-50 to-green-100">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <header className="text-center mb-12">
+          <h1 className="text-4xl font-bold text-green-900 mb-2">Farm Planning Preferences</h1>
+          <p className="text-green-700">Tell us about your farming preferences and goals</p>
+        </header>
 
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <div>
-            <label htmlFor="category" className="block mb-2 font-medium">Plant Categories</label>
-            <Select
-              instanceId="category-select"
-              id="category"
-              name="category"
-              value={categoryOptions.filter(opt => formData.preferred_categories.includes(opt.value))}
-              onChange={(opt) => handleSelectChange(opt as readonly Option[], { name: 'preferred_categories' })}
-              options={categoryOptions}
-              className="react-select"
-              placeholder="Search or select categories"
-              isClearable
-              isSearchable
-              isMulti
-              closeMenuOnSelect={false}
-            />
-          </div>
-
-          <div>
-            <label htmlFor="likedPlants" className="block mb-2 font-medium">Preferred Plants</label>
-            <Select
-              instanceId="liked-plants-select"
-              id="likedPlants"
-              name="likedPlants"
-              value={plantOptions.filter(opt => formData.preferred_crops.includes(opt.value))}
-              onChange={(opt) => handleSelectChange(opt as readonly Option[], { name: 'preferred_crops' })}
-              options={availableLikedPlantOptions}
-              className="react-select"
-              placeholder="Search or select preferred plants"
-              isClearable
-              isSearchable
-              isMulti
-              closeMenuOnSelect={false}
-            />
-          </div>
-
-          <div>
-            <label htmlFor="dislikedPlants" className="block mb-2 font-medium">Disliked Plants</label>
-            <Select
-              instanceId="disliked-plants-select"
-              id="dislikedPlants"
-              name="dislikedPlants"
-              value={plantOptions.filter(opt => formData.disliked_crops.includes(opt.value))}
-              onChange={(opt) => handleSelectChange(opt as readonly Option[], { name: 'disliked_crops' })}
-              options={availableDislikedPlantOptions}
-              className="react-select"
-              placeholder="Search or select disliked plants"
-              isClearable
-              isSearchable
-              isMulti
-              closeMenuOnSelect={false}
-            />
-          </div>
-
-          <div className="space-y-4">
-            <div>
-              <label htmlFor="budget" className="block mb-2 font-medium">Budget ($)</label>
-              <input
-                type="number"
-                id="budget"
-                name="budget"
-                min="0"
-                value={formData.budget}
-                onChange={handleChange}
-                className="w-full p-2 border rounded"
-                required
-                placeholder="1000"
-              />
-            </div>
-          </div>
-
-          <div className="space-y-4">
-            <div>
-              <label htmlFor="targetCalories" className="block mb-2 font-medium">Target Daily Calories</label>
-              <div className="relative">
-                <input
-                  type="number"
-                  id="targetCalories"
-                  name="target_calories"
-                  min="0"
-                  value={formData.target_calories}
-                  onChange={handleChange}
-                  className="w-full p-2 border rounded pl-3 pr-12"
-                  placeholder="2000"
+        <main className="max-w-2xl mx-auto">
+          <div className="bg-white rounded-lg shadow-xl p-6">
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div>
+                <label htmlFor="category" className="block mb-2 font-medium text-green-800">Preferred Plant Categories</label>
+                <Select
+                  instanceId="category-select"
+                  id="category"
+                  name="category"
+                  value={categoryOptions.filter(opt => formData.preferred_categories.includes(opt.value))}
+                  onChange={(opt) => handleSelectChange(opt as readonly Option[], { name: 'preferred_categories' })}
+                  options={categoryOptions}
+                  className="react-select"
+                  placeholder="Search or select categories"
+                  isClearable
+                  isSearchable
+                  isMulti
+                  closeMenuOnSelect={false}
                 />
-                <span className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500">kcal</span>
               </div>
-            </div>
 
-            <div>
-              <label htmlFor="targetProtein" className="block mb-2 font-medium">Target Daily Protein</label>
-              <div className="relative">
-                <input
-                  type="number"
-                  id="targetProtein"
-                  name="target_protein"
-                  min="0"
-                  value={formData.target_protein}
-                  onChange={handleChange}
-                  className="w-full p-2 border rounded pl-3 pr-12"
-                  placeholder="50"
+              <div>
+                <label htmlFor="likedPlants" className="block mb-2 font-medium text-green-800">Preferred Plants</label>
+                <Select
+                  instanceId="liked-plants-select"
+                  id="likedPlants"
+                  name="likedPlants"
+                  value={plantOptions.filter(opt => formData.preferred_crops.includes(opt.value))}
+                  onChange={(opt) => handleSelectChange(opt as readonly Option[], { name: 'preferred_crops' })}
+                  options={availableLikedPlantOptions}
+                  className="react-select"
+                  placeholder="Search or select preferred plants"
+                  isClearable
+                  isSearchable
+                  isMulti
+                  closeMenuOnSelect={false}
                 />
-                <span className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500">g</span>
               </div>
-            </div>
+
+              <div>
+                <label htmlFor="dislikedPlants" className="block mb-2 font-medium text-green-800">Disliked Plants</label>
+                <Select
+                  instanceId="disliked-plants-select"
+                  id="dislikedPlants"
+                  name="dislikedPlants"
+                  value={plantOptions.filter(opt => formData.disliked_crops.includes(opt.value))}
+                  onChange={(opt) => handleSelectChange(opt as readonly Option[], { name: 'disliked_crops' })}
+                  options={availableDislikedPlantOptions}
+                  className="react-select"
+                  placeholder="Search or select disliked plants"
+                  isClearable
+                  isSearchable
+                  isMulti
+                  closeMenuOnSelect={false}
+                />
+              </div>
+
+              <div className="space-y-4">
+
+                <div>
+                  <label htmlFor="budget" className="block mb-2 font-medium text-green-800">Budget</label>
+                  <div className="relative">
+                    <input
+                      type="number"
+                      id="budget"
+                      name="budget"
+                      min="0"
+                      value={formData.budget}
+                      onChange={handleChange}
+                      className="w-full p-2 border rounded pl-3 pr-12 focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                      placeholder="100000"
+                    />
+                    <span className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500">$</span>
+                  </div>
+                </div>
+
+                <div>
+                  <label htmlFor="targetCalories" className="block mb-2 font-medium text-green-800">Target Daily Calories</label>
+                  <div className="relative">
+                    <input
+                      type="number"
+                      id="targetCalories"
+                      name="target_calories"
+                      min="0"
+                      value={formData.target_calories}
+                      onChange={handleChange}
+                      className="w-full p-2 border rounded pl-3 pr-12 focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                      placeholder="2000"
+                    />
+                    <span className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500">kcal</span>
+                  </div>
+                </div>
+
+                <div>
+                  <label htmlFor="targetProtein" className="block mb-2 font-medium text-green-800">Target Daily Protein</label>
+                  <div className="relative">
+                    <input
+                      type="number"
+                      id="targetProtein"
+                      name="target_protein"
+                      min="0"
+                      value={formData.target_protein}
+                      onChange={handleChange}
+                      className="w-full p-2 border rounded pl-3 pr-12 focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                      placeholder="50"
+                    />
+                    <span className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500">g</span>
+                  </div>
+                </div>
+              </div>
+
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className={`w-full py-3 px-4 rounded-lg transition-colors ${isSubmitting
+                  ? 'bg-green-400 cursor-not-allowed'
+                  : 'bg-green-600 hover:bg-green-700 shadow-lg hover:shadow-xl'
+                  } text-white font-semibold`}
+              >
+                {isSubmitting ? 'Submitting...' : 'Submit Preferences'}
+              </button>
+
+              {apiError && (
+                <div className="mt-4 p-4 rounded border border-red-200 bg-red-100">
+                  <p className="text-red-600">{apiError}</p>
+                </div>
+              )}
+            </form>
           </div>
-
-          <button
-            type="submit"
-            disabled={isSubmitting}
-            className={`w-full py-2 px-4 rounded transition-colors ${isSubmitting
-              ? 'bg-green-400 cursor-not-allowed'
-              : 'bg-green-600 hover:bg-green-700'
-              } text-white`}
-          >
-            {isSubmitting ? 'Submitting...' : 'Submit Preferences'}
-          </button>
-
-          {apiError && (
-            <div className="mt-4 p-4 rounded border">
-              <p className="text-red-600">{apiError}</p>
-            </div>
-          )}
-        </form>
-      </main>
-    </div>
+        </main>
+      </div >
+    </div >
   );
 }
