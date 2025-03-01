@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Select from 'react-select';
 import { loadPlantData, type PlantData } from '@/utils/plantData';
+import LoadingPage from "@/components/LoadingPage";
 
 type Option = {
   value: string;
@@ -117,10 +118,8 @@ export default function Home() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen p-8">
-        <main className="max-w-md mx-auto">
-          <h1 className="text-2xl font-bold mb-6">Loading plant data...</h1>
-        </main>
+      <div className="h-screen w-screen flex items-center justify-center">
+        <LoadingPage />
       </div>
     );
   }
