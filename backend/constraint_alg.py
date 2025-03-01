@@ -183,7 +183,7 @@ def solve_budget(budget, target_prots, target_cals, areas, proteins, calories, d
 
     return amnt_crops.value(), areas, proteins, calories
 
-def calculate_result(preferred_categories: int, preferred_crops: int, disliked_crops: list, budget: float, target_calories: float, target_protein: float):
+def calculate_result(preferred_categories: list, preferred_crops: list, disliked_crops: list, budget: float, target_calories: float, target_protein: float):
     transformed_preferred_crops = np.isin(crops, list(preferred_crops)).astype(int)
     transformed_aversion_crops = np.isin(crops, list(disliked_crops)).astype(int)
     transformed_categories = np.isin(categories, list(preferred_categories)).astype(int)
@@ -197,7 +197,7 @@ def calculate_result(preferred_categories: int, preferred_crops: int, disliked_c
     common_climate = most_common_element(no_b_climates)
     good_location = get_cheapest_location(common_climate)
     result = (good_location, {c:(area[i], proteins[i], calories[i]) for i,c in enumerate(crop_names)})
-    amnt_crops, n_areas, n_proteins, n_calories = solve_budget(budget, int(target_calories*10), int(target_protein*10), areas, [10*p for p in proteins], [10*c for c in calories], result)
+    amnt_crops, n_areas, n_proteins, n_calories = solve_budget(int(budget), int(target_calories*10), int(target_protein*10), areas, [10*p for p in proteins], [10*c for c in calories], result)
     total_areas = amnt_crops*area
     total_costs = total_areas*get_cost(good_location)   
     result = dict()
@@ -207,4 +207,4 @@ def calculate_result(preferred_categories: int, preferred_crops: int, disliked_c
 
     return result
 
-print(calculate_result({"Grains & Legumes"}, {"Cilantro"}, {"Orange"}, 100000000000, 2000, 50))
+# print(calculate_result(["Grains & Legumes"], ["Cilantro"], ["Orange"], 100000000000, 2000, 50))
