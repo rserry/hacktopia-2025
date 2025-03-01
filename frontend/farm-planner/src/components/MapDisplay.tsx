@@ -11,20 +11,24 @@ export interface Location {
 }
 
 const locationData: Location[] = [
-    { id: 1, name: "Airstrip One", coordinates: { x: 400, y: 70 } },
-    { id: 2, name: "Victory Mansions", coordinates: { x: 520, y: 390 } },
-    { id: 3, name: "Ministry of Truth", coordinates: { x: 440, y: 420 } },
-    { id: 4, name: "Ministry of Love", coordinates: { x: 380, y: 260 } },
-    { id: 5, name: "Ministry of Peace", coordinates: { x: 240, y: 380 } },
-    { id: 6, name: "Ministry of Plenty", coordinates: { x: 600, y: 200 } },
-    { id: 7, name: "Chestnut Tree Café", coordinates: { x: 320, y: 190 } },
-    { id: 8, name: "Golden Country", coordinates: { x: 270, y: 470 } },
-    { id: 9, name: "Outer Party Sector", coordinates: { x: 620, y: 80 } },
-    { id: 10, name: "Prole District", coordinates: { x: 160, y: 340 } }
+    { id: 1, name: "Airstrip One", coordinates: { x: 896, y: 119 } },
+    { id: 2, name: "Victory Mansions", coordinates: { x: 1165, y: 666 } },
+    { id: 3, name: "Ministry of Truth", coordinates: { x: 986, y: 717 } },
+    { id: 4, name: "Ministry of Love", coordinates: { x: 851, y: 444 } },
+    { id: 5, name: "Ministry of Peace", coordinates: { x: 538, y: 649 } },
+    { id: 6, name: "Ministry of Plenty", coordinates: { x: 1344, y: 341 } },
+    { id: 7, name: "Chestnut Tree Café", coordinates: { x: 717, y: 324 } },
+    { id: 8, name: "Golden Country", coordinates: { x: 605, y: 802 } },
+    { id: 9, name: "Outer Party Sector", coordinates: { x: 1389, y: 137 } },
+    { id: 10, name: "Prole District", coordinates: { x: 358, y: 580 } }
 ];
 
+type LocationNames = "Airstrip One" | "Victory Mansions" | "Ministry of Truth" |
+    "Ministry of Love" | "Ministry of Peace" | "Ministry of Plenty" |
+    "Chestnut Tree Café" | "Golden Country" | "Outer Party Sector" | "Prole District";
+
 interface MapDisplayProps {
-    selectedLocation?: string;
+    selectedLocation?: LocationNames;
 }
 
 const MapDisplay: React.FC<MapDisplayProps> = ({ selectedLocation }) => {
@@ -32,8 +36,8 @@ const MapDisplay: React.FC<MapDisplayProps> = ({ selectedLocation }) => {
     const [scale, setScale] = useState({ x: 1, y: 1 });
 
     // Original image dimensions
-    const ORIGINAL_WIDTH = 800;
-    const ORIGINAL_HEIGHT = 600;
+    const ORIGINAL_WIDTH = 1792;
+    const ORIGINAL_HEIGHT = 1024;
 
     useEffect(() => {
         const updateScale = () => {
