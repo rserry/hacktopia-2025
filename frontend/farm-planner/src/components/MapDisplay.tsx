@@ -75,13 +75,17 @@ const MapDisplay: React.FC<MapDisplayProps> = ({ selectedLocation }) => {
     );
 
     const MapContent = () => (
-        <div ref={mapRef} className="relative w-full h-full">
+        <div
+            ref={mapRef}
+            className={`relative w-full ${isExpanded ? 'h-full' : ''}`}
+            style={{ aspectRatio: `${ORIGINAL_WIDTH} / ${ORIGINAL_HEIGHT}` }}
+        >
             <Image
                 src="/map.webp"
                 alt="Fantasy World Map"
                 width={ORIGINAL_WIDTH}
                 height={ORIGINAL_HEIGHT}
-                className={`w-full h-full object-${isExpanded ? 'contain' : 'cover'}`}
+                className="w-full h-full object-contain"
                 priority={true}
             />
             <LocationMarker />
@@ -95,7 +99,7 @@ const MapDisplay: React.FC<MapDisplayProps> = ({ selectedLocation }) => {
                 onClick={() => setIsExpanded(false)}
             >
                 <div
-                    className="bg-white rounded-lg w-[95vw] h-[90vh] p-6 relative"
+                    className="bg-white rounded-lg w-[95vw] h-[90vh] p-6 relative flex items-center justify-center"
                     onClick={e => e.stopPropagation()}
                 >
                     <button
@@ -106,7 +110,9 @@ const MapDisplay: React.FC<MapDisplayProps> = ({ selectedLocation }) => {
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                         </svg>
                     </button>
-                    <MapContent />
+                    <div className="h-full w-full flex items-center justify-center">
+                        <MapContent />
+                    </div>
                 </div>
             </div>
         );
