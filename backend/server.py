@@ -17,8 +17,8 @@ class InputData(BaseModel):
     preferred_crops: List[str]
     disliked_crops: List[str]
     budget: float
-    target_calories: float
-    target_protein: float
+    target_calories: float | None
+    target_protein: float | None
 
 def calculate_result(preferred_categories: list, preferred_crops: list, disliked_crops: list, budget: float, target_calories: float, target_protein: float):
     result: tuple[str, dict[str, int]] = ("A", {"B": 10, "C": 20})
