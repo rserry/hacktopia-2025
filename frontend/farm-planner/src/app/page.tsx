@@ -118,8 +118,6 @@ export default function Home() {
       if (response.ok) {
         const result = await response.json();
         router.push(`/result?result=${encodeURIComponent(JSON.stringify(result))}`);
-      } else if (response.status === 400) {
-        router.push(`/result?error=true`);
       } else {
         throw new Error('Failed to submit preferences');
       }
