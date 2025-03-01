@@ -1,15 +1,27 @@
 'use client';
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import ResultDisplay from '@/components/ResultDisplay';
 import MapDisplay from '@/components/MapDisplay';
+import LoadingPage from '@/components/LoadingPage';
 
 const ResultPage: React.FC = () => {
-  const searchParams = useSearchParams()
-  const result = searchParams.get('result')
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const result = searchParams.get('result');
+
+  useEffect(() => {
+    if (!result) {
+      router.replace('/');
+    }
+  }, [result, router]);
 
   if (!result) {
-    return <div>Loading...</div>;
+    return <div className="min-h-screen bg-gradient-to-b from-green-50 to-green-100 flex items-center justify-center">
+      <LoadingPage />
+    </div>;
   }
 
   const parsedResult = JSON.parse(result as string);
@@ -37,6 +49,15 @@ const ResultPage: React.FC = () => {
             />
           </div>
         </main>
+
+        <div className="mt-8 text-center">
+          <Link
+            href="/"
+            className="inline-flex items-center gap-2 py-3 px-6 bg-green-600 hover:bg-green-700 text-white rounded-lg shadow-lg hover:shadow-xl transition-all"
+          >
+            ← Back to Home
+          </Link>
+        </div>
 
         <footer className="mt-12 text-center text-sm text-green-600">
           <p>These recommendations are based on crop preference and climate data</p>

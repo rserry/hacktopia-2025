@@ -126,7 +126,7 @@ export default function Home() {
 
   if (isLoading) {
     return (
-      <div className="h-screen w-screen flex items-center justify-center">
+      <div className="h-screen w-screen flex items-center justify-center bg-gradient-to-b from-green-50 to-green-100">
         <LoadingPage />
       </div>
     );
