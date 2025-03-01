@@ -1,8 +1,7 @@
 'use client';
 import { useState, useEffect } from "react";
 import Select from 'react-select';
-import { loadPlantData } from '@/utils/plantData';
-import type { PlantData } from '@/utils/plantData';
+import { loadPlantData, type PlantData } from '@/utils/plantData';
 
 type Option = {
   value: string;
@@ -10,15 +9,24 @@ type Option = {
   data?: PlantData;
 };
 
+interface FormData {
+  preferred_categories: string[];
+  preferred_crops: string[];
+  disliked_crops: string[];
+  budget: string;
+  target_calories: string;
+  target_protein: string;
+}
+
 export default function Home() {
   const [plantData, setPlantData] = useState<PlantData[]>([]);
-  const [formData, setFormData] = useState({
-    preferred_categories: [] as string[],
-    preferred_crops: [] as string[],
-    disliked_crops: [] as string[],
-    budget: undefined,
-    target_calories: undefined,
-    target_protein: undefined
+  const [formData, setFormData] = useState<FormData>({
+    preferred_categories: [],
+    preferred_crops: [],
+    disliked_crops: [],
+    budget: '',
+    target_calories: '',
+    target_protein: ''
   });
 
   useEffect(() => {
@@ -59,12 +67,19 @@ export default function Home() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
+      const numericFormData = {
+        ...formData,
+        budget: formData.budget ? Number(formData.budget) : null,
+        target_calories: formData.target_calories ? Number(formData.target_calories) : null,
+        target_protein: formData.target_protein ? Number(formData.target_protein) : null
+      };
+
       const response = await fetch('http://localhost:8000/calculate', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(numericFormData),
       });
 
       if (response.ok) {
@@ -95,6 +110,7 @@ export default function Home() {
           <div>
             <label htmlFor="category" className="block mb-2 font-medium">Plant Categories</label>
             <Select
+              instanceId="category-select"
               id="category"
               name="category"
               value={categoryOptions.filter(opt => formData.preferred_categories.includes(opt.value))}
@@ -105,13 +121,14 @@ export default function Home() {
               isClearable
               isSearchable
               isMulti
-              required
+              closeMenuOnSelect={false}
             />
           </div>
 
           <div>
             <label htmlFor="likedPlants" className="block mb-2 font-medium">Preferred Plants</label>
             <Select
+              instanceId="liked-plants-select"
               id="likedPlants"
               name="likedPlants"
               value={plantOptions.filter(opt => formData.preferred_crops.includes(opt.value))}
@@ -122,13 +139,14 @@ export default function Home() {
               isClearable
               isSearchable
               isMulti
-              required
+              closeMenuOnSelect={false}
             />
           </div>
 
           <div>
             <label htmlFor="dislikedPlants" className="block mb-2 font-medium">Disliked Plants</label>
             <Select
+              instanceId="disliked-plants-select"
               id="dislikedPlants"
               name="dislikedPlants"
               value={plantOptions.filter(opt => formData.disliked_crops.includes(opt.value))}
@@ -139,11 +157,11 @@ export default function Home() {
               isClearable
               isSearchable
               isMulti
-              required
+              closeMenuOnSelect={false}
             />
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
+          <div className="space-y-4">
             <div>
               <label htmlFor="budget" className="block mb-2 font-medium">Budget ($)</label>
               <input
@@ -159,33 +177,39 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
+          <div className="space-y-4">
             <div>
-              <label htmlFor="targetCalories" className="block mb-2 font-medium">Target Calories</label>
-              <input
-                type="number"
-                id="targetCalories"
-                name="target_calories"
-                min="0"
-                value={formData.target_calories}
-                onChange={handleChange}
-                className="w-full p-2 border rounded"
-                required
-              />
+              <label htmlFor="targetCalories" className="block mb-2 font-medium">Target Daily Calories</label>
+              <div className="relative">
+                <input
+                  type="number"
+                  id="targetCalories"
+                  name="target_calories"
+                  min="0"
+                  value={formData.target_calories}
+                  onChange={handleChange}
+                  className="w-full p-2 border rounded pl-3 pr-12"
+                  placeholder="2000"
+                />
+                <span className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500">kcal</span>
+              </div>
             </div>
 
             <div>
-              <label htmlFor="targetProtein" className="block mb-2 font-medium">Target Protein (g)</label>
-              <input
-                type="number"
-                id="targetProtein"
-                name="target_protein"
-                min="0"
-                value={formData.target_protein}
-                onChange={handleChange}
-                className="w-full p-2 border rounded"
-                required
-              />
+              <label htmlFor="targetProtein" className="block mb-2 font-medium">Target Daily Protein</label>
+              <div className="relative">
+                <input
+                  type="number"
+                  id="targetProtein"
+                  name="target_protein"
+                  min="0"
+                  value={formData.target_protein}
+                  onChange={handleChange}
+                  className="w-full p-2 border rounded pl-3 pr-12"
+                  placeholder="50"
+                />
+                <span className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500">g</span>
+              </div>
             </div>
           </div>
 
