@@ -173,6 +173,7 @@ export default function Home() {
                 onChange={handleChange}
                 className="w-full p-2 border rounded"
                 required
+                placeholder="1000"
               />
             </div>
           </div>
