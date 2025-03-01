@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import ResultDisplay from '@/components/ResultDisplay';
 import MapDisplay from '@/components/MapDisplay';
-import LoadingPage from '@/components/LoadingPage';
 
 const ResultPage: React.FC = () => {
   const router = useRouter();

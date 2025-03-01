@@ -19,16 +19,16 @@ interface ResultProps {
 }
 
 const locationClimate: Location[] = [
-    { name: "Airstrip One", climate: "Tropical" },
-    { name: "Victory Mansions", climate: "Tropical" },
-    { name: "Ministry of Truth", climate: "Tropical" },
-    { name: "Ministry of Love", climate: "Temperate" },
-    { name: "Ministry of Peace", climate: "Temperate" },
-    { name: "Ministry of Plenty", climate: "Temperate" },
-    { name: "Chestnut Tree Café", climate: "Temperate" },
-    { name: "Golden Country", climate: "Mediterranean" },
-    { name: "Outer Party Sector", climate: "Mediterranean" },
-    { name: "Prole District", climate: "Polar" }
+    { name: "Airstrip One", climate: "B" },
+    { name: "Victory Mansions", climate: "A" },
+    { name: "Ministry of Truth", climate: "A" },
+    { name: "Ministry of Love", climate: "C" },
+    { name: "Ministry of Peace", climate: "C" },
+    { name: "Ministry of Plenty", climate: "C" },
+    { name: "Chestnut Tree Café", climate: "C" },
+    { name: "Golden Country", climate: "D" },
+    { name: "Outer Party Sector", climate: "D" },
+    { name: "Prole District", climate: "E" }
 ];
 
 const getClimateIcon = (climate: string) => {
