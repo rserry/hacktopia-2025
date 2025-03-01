@@ -21,13 +21,13 @@ class InputData(BaseModel):
     target_protein: float | None
 
 def calculate_result(preferred_categories: list, preferred_crops: list, disliked_crops: list, budget: float, target_calories: float, target_protein: float):
-    result: tuple[str, dict[str, int]] = ("A", {"B": 10, "C": 20})
+    result = {"location": "A", "crops": {"B": 10, "C": 20}}
     return result
 
 @app.post("/calculate")
 async def calculate(input_data: InputData):
     try:
         result = calculate_result(input_data.preferred_categories, input_data.preferred_crops, input_data.disliked_crops, input_data.budget, input_data.target_calories, input_data.target_protein)
-        return {"result": result}
+        return result
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

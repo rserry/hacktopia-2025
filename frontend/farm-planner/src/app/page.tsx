@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from "react";
+import { useRouter } from 'next/navigation';
 import Select from 'react-select';
 import { loadPlantData, type PlantData } from '@/utils/plantData';
 import LoadingPage from "@/components/LoadingPage";
@@ -34,6 +35,7 @@ export default function Home() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [apiResponse, setApiResponse] = useState<string | null>(null);
   const [apiError, setApiError] = useState<string>('');
+  const router = useRouter();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -95,8 +97,8 @@ export default function Home() {
       });
 
       if (response.ok) {
-        const data = await response.json();
-        setApiResponse(data);
+        const result = await response.json();
+        router.push(`/result?result=${encodeURIComponent(JSON.stringify(result))}`);
       } else {
         throw new Error('Failed to submit preferences');
       }
