@@ -56,8 +56,6 @@ def calc_climate_distance(climate1: int, climate2: int) -> int:
     
     # i, j = climate_order[climate1], climate_order[climate2]
     i, j = climate1 - 1, climate2 - 1
-    print(f"i is {i}")
-    print(f"j is {j.value()}")
     return distance_matrix[i][j]
 
 def map_to_climate_letter(climates):
@@ -117,6 +115,8 @@ locations = remove_duplicates_preserve_order(get_column_data(weather_data, colum
 loc_climates = [c[0] for c in remove_duplicates_preserve_order(get_column_data(weather_data, column=2))]
 loc_costs = remove_duplicates_preserve_order(get_column_data(weather_data, column=10))
 
+def get_cost(location):
+    return loc_costs[locations.index(location)]
 
 def get_cheapest_location(climate):
     all_locations = [loc for loc in [l for i, l in enumerate(locations) if loc_climates[i] == climate]]
@@ -159,6 +159,30 @@ def solve_model(pref_crops, av_crops, pref_cats):
     model.solve()
     return selected_crops.value()
 
+def cal_prot_obj_fun(amnt_crops, proteins, calories, target_prots, target_cals):
+    w1 = 5  # For preferred crops
+    w2 = 5  # For aversion crops
+
+    return cp.sum([w1*abs(proteins*amnt_crops - target_prots), 
+                   w2*abs(calories*amnt_crops - target_cals)])
+
+def solve_budget(budget, target_prots, target_cals, areas, proteins, calories, dictionary):
+    location, crops = dictionary
+    area_budget = budget // get_cost(location)
+    amnt_crops = cp.intvar(0, 1000, shape=len(crops))
+
+    model = cp.Model()
+
+    areas = [int(100*a) for a in areas]
+    model += cp.sum(amnt_crops*areas) <= area_budget*100
+    model += cp.all([val >= 1 for val in amnt_crops])
+
+    model.minimize(cal_prot_obj_fun(amnt_crops, proteins, calories, target_prots, target_cals))
+    
+    model.solve()
+
+    return amnt_crops.value(), areas, proteins, calories
+
 def calculate_result(preferred_categories: set, preferred_crops: set, disliked_crops: list, budget: float, target_calories: float, target_protein: float):
     transformed_preferred_crops = np.isin(crops, list(preferred_crops)).astype(int)
     transformed_aversion_crops = np.isin(crops, list(disliked_crops)).astype(int)
@@ -167,26 +191,20 @@ def calculate_result(preferred_categories: set, preferred_crops: set, disliked_c
     crop_names = [crop for i, crop in enumerate(crops) if selected_crops[i]]
     corr_climates = [climate for i, climate in enumerate(climates_as_letters) if selected_crops[i]]
     area = [a for i, a in enumerate(areas) if selected_crops[i]]
+    proteins = [p for i, p in enumerate(protein_values) if selected_crops[i]]
+    calories = [c for i, c in enumerate(kcal_values) if selected_crops[i]]
     no_b_climates = [c for c in corr_climates if c != "B"]
     common_climate = most_common_element(no_b_climates)
     good_location = get_cheapest_location(common_climate)
-    result = (good_location, {c:area[i] for i,c in enumerate(crop_names)})
-    result = {
-        "location": "Victory Mansions", 
-        "crops": [
-            {
-                "name": "Apple",
-                "area": 10,
-                "cost": 5,
-                "climate": "Temperate"
-            }, 
-            {
-                "name": "Peach",
-                "area": 20,
-                "cost": 7,
-                "climate": "Tropical"
-            }
-        ]
-    }
+    result = (good_location, {c:(area[i], proteins[i], calories[i]) for i,c in enumerate(crop_names)})
+    amnt_crops, n_areas, n_proteins, n_calories = solve_budget(budget, int(target_calories*10), int(target_protein*10), areas, [10*p for p in proteins], [10*c for c in calories], result)
+    total_areas = amnt_crops*area
+    total_costs = total_areas*get_cost(good_location)   
+    result = dict()
+    result["location"] = good_location
+    result["crops"] = [{"name": name, "area": area, "cost": cost} for name, area, cost in zip(crop_names, total_areas, total_costs)]
+
+
     return result
 
+# calculate_result({"Fruits & Berries"}, {"Apple", "Papaya", "Radish"}, {}, 1000, 20000, 10)
