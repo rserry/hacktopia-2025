@@ -45,7 +45,7 @@ const ResultPage: React.FC = () => {
           <div className="bg-white rounded-lg shadow-xl p-6">
             <h2 className="text-xl font-semibold mb-4 text-green-800">Location Map</h2>
             <MapDisplay
-              selectedLocation={"Airstrip One"}
+              selectedLocation={parsedResult.location}
             />
           </div>
         </main>
