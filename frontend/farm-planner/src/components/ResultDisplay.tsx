@@ -1,5 +1,5 @@
 import React from 'react';
-import { TreePalm, Sun, CloudRain, Snowflake } from 'lucide-react';
+import { TreePalm, Sun, CloudRain, Snowflake, Pyramid } from 'lucide-react';
 
 interface Location {
     name: string;
@@ -33,13 +33,15 @@ const locationClimate: Location[] = [
 
 const getClimateIcon = (climate: string) => {
     switch (climate) {
-        case "Tropical":
+        case "A":
             return <TreePalm style={{ width: '36px', height: '36px', color: 'green' }} className="inline-block ml-2" />;
-        case "Temperate":
+        case "B":
+            return <Pyramid style={{ width: '36px', height: '36px', color: 'orange' }} className="inline-block ml-2" />;
+        case "C":
             return <Sun style={{ width: '36px', height: '36px', color: 'yellow' }} className="inline-block ml-2" />;
-        case "Mediterranean":
+        case "D":
             return <CloudRain style={{ width: '36px', height: '36px', color: 'blue' }} className="inline-block ml-2" />;
-        case "Polar":
+        case "E":
             return <Snowflake style={{ width: '36px', height: '36px', color: 'white' }} className="inline-block ml-2" />;
         default:
             return null;
