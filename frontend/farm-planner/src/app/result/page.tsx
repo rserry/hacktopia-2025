@@ -11,19 +11,24 @@ const ResultPage: React.FC = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const result = searchParams.get('result');
+  const errorParam = searchParams.get('error');
+  const error = errorParam === 'true';
 
   useEffect(() => {
-    if (!result) {
+    if (!result && !error) {
       router.replace('/');
     }
-  }, [result, router]);
+  }, [result, error, router]);
 
-  if (!result) {
+  if (error) {
     return <div className="min-h-screen bg-gradient-to-b from-green-50 to-green-100 flex items-center justify-center">
-      <LoadingPage />
+        <div className="max-w-2xl w-full bg-white p-8 rounded-lg shadow-xl text-center">
+        <h2 className="text-2xl font-bold text-red-600 mb-4">Failed to find an optimal solution</h2>
+        <p className="text-red-600">Try to change your diet or budget</p>
+        <Link href="/" className="inline-block mt-4 bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-lg">Back to Home</Link>
+      </div>
     </div>;
   }
-
   const parsedResult = JSON.parse(result as string);
 
   return (
