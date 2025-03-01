@@ -193,8 +193,7 @@ def calculate_result(preferred_categories: list, preferred_crops: list, disliked
     area = [a for i, a in enumerate(areas) if selected_crops[i]]
     proteins = [p for i, p in enumerate(protein_values) if selected_crops[i]]
     calories = [c for i, c in enumerate(kcal_values) if selected_crops[i]]
-    no_b_climates = [c for c in corr_climates if c != "B"]
-    common_climate = most_common_element(no_b_climates)
+    common_climate = most_common_element(corr_climates)
     good_location = get_cheapest_location(common_climate)
     result = (good_location, {c:(area[i], proteins[i], calories[i]) for i,c in enumerate(crop_names)})
     amnt_crops, n_areas, n_proteins, n_calories = solve_budget(int(budget), int(target_calories*10), int(target_protein*10), areas, [10*p for p in proteins], [10*c for c in calories], result)
